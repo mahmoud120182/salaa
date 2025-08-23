@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكارم الأخلاق</title>
+    <meta name="description"
+        content="اللّٰهُمَّ اجْعَلْ هٰذَا صَدَقَةً جَارِيَةً لِي وَلِوَالِدَيَّ وَأَهْلِ بَيْتِي وَلِكُلِّ مَنْ أَرْسَلَهُ وَقَرَأَهُ وَنَفَعَ النَّاسَ بِهِ" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --islamic-green: #2c5e1a;
+            --gold: #d4af37;
+            --light-beige: #f5f5dc;
+            --dark-brown: #5d4037;
+            --dark-green: #1e3c1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-beige);
+            color: var(--dark-brown);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-family="Arial" font-size="40" fill="%232c5e1a" opacity="0.05">ﷲ</text></svg>');
+            background-repeat: repeat;
+            line-height: 1.6;
+        }
+
+        /* Loading screen styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-green), #1e3c1a);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            padding: 30px;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .loading-statement {
+            color: #f5f5dc;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.15);
+            transition: all 0.5s ease;
+        }
+
+        .loading-progress {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--gold);
+            animation: spin 1.5s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-counter {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+
+        .container {
+            padding: 15px;
+            max-width: 100%;
+            min-height: 100vh;
+            display: none;
+            /* Hidden until images load */
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: var(--islamic-green);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .page-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .dua-text {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--islamic-green);
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(44, 94, 26, 0.1);
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .search-bar-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--islamic-green);
+            box-shadow: 0 2px 8px rgba(44, 94, 26, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--islamic-green);
+        }
+
+        .hadith-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .hadith-title {
+            position: relative;
+            /* Add this line */
+            width: 100%;
+            word-wrap: break-word;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            line-height: 1.3;
+            border: 3px solid white;
+            padding: 15px;
+        }
+
+        /* Update .image-counter with higher z-index and better visibility */
+        .image-counter {
+            position: absolute;
+            top: -5px;
+            /* Changed from -5px */
+            left: -5px;
+            /* Changed from -5px */
+            background-color: var(--light-beige);
+            /* More visible color */
+            color: var(--dark-brown);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            /* Increased from 1 */
+            border: 2px solid white;
+        }
+
+
+        .hadith-title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            /* Add this to contain the gradient */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .hadith-title:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hadith-title:hover::before {
+            opacity: 1;
+        }
+
+        /* Different background colors for each hadith title */
+        .hadith-title:nth-child(1) {
+            background-color: #3498db;
+            /* Blue */
+        }
+
+        .hadith-title:nth-child(2) {
+            background-color: #e74c3c;
+            /* Red */
+        }
+
+        .hadith-title:nth-child(3) {
+            background-color: #2ecc71;
+            /* Green */
+        }
+
+        .hadith-title:nth-child(4) {
+            background-color: #9b59b6;
+            /* Purple */
+        }
+
+        .hadith-title:nth-child(5) {
+            background-color: #f39c12;
+            /* Orange */
+        }
+
+        .hadith-title:nth-child(6) {
+            background-color: #1abc9c;
+            /* Teal */
+        }
+
+        .hadith-title:nth-child(7) {
+            background-color: #34495e;
+            /* Dark Gray */
+        }
+
+        .hadith-title:nth-child(8) {
+            background-color: #f1c40f;
+            /* Yellow */
+        }
+
+        .hadith-title:nth-child(9) {
+            background-color: #e67e22;
+            /* Burnt Orange */
+        }
+
+        .hadith-title:nth-child(10) {
+            background-color: #16a085;
+            /* Dark Teal */
+        }
+
+        .hadith-title:nth-child(11) {
+            background-color: #2980b9;
+            /* Darker Blue */
+        }
+
+        .hadith-title:nth-child(12) {
+            background-color: #c0392b;
+            /* Darker Red */
+        }
+
+        .hadith-title:nth-child(13) {
+            background-color: #8e44ad;
+            /* Darker Purple */
+        }
+
+        .hadith-title:nth-child(14) {
+            background-color: #d35400;
+            /* Pumpkin */
+        }
+
+        .hadith-title:nth-child(15) {
+            background-color: #f368e0;
+            /* Pink */
+        }
+
+        .hadith-title:nth-child(16) {
+            background-color: #7f8c8d;
+            /* Gray */
+        }
+
+        .hadith-title:nth-child(17) {
+            background-color: #c0f312;
+            /* Lime Green */
+        }
+
+        .hadith-title:nth-child(18) {
+            background-color: #7d52a3;
+            /* Muted Purple */
+        }
+
+        .hadith-title:nth-child(19) {
+            background-color: #5c8d89;
+            /* Cadet Blue */
+        }
+
+        .hadith-title:nth-child(20) {
+            background-color: #b9e1e1;
+            /* Light Cyan */
+        }
+
+        .hadith-title:nth-child(21) {
+            background-color: #ff7f50;
+            /* Coral */
+        }
+
+        .hadith-title:nth-child(22) {
+            background-color: #4682b4;
+            /* Steel Blue */
+        }
+
+        .hadith-title:nth-child(23) {
+            background-color: #a52a2a;
+            /* Brown */
+        }
+
+        /* Hadith Page Styles */
+        .hadith-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--light-beige);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .hadith-header {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(to right, var(--islamic-green), #1e8449);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hadith-page-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .home-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+
+        .home-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .hadith-content {
+            padding: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hadith-image-container {
+            position: relative;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .hadith-image {
+            width: 100%;
+            display: block;
+        }
+
+        /* Animation for page transitions */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .loading-statement {
+                font-size: 1.8rem;
+                min-height: 150px;
+            }
+
+            .loading-progress {
+                font-size: 1.5rem;
+            }
+
+            .hadith-list {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                /* Increased from 100px */
+                gap: 18px;
+                /* Increased from 15px */
+            }
+
+            .hadith-title {
+                font-size: 2.0rem;
+                /* Increased from 1.7rem */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loading-statement {
+                font-size: 1.5rem;
+                min-height: 120px;
+            }
+
+            .loading-progress {
+                font-size: 1.2rem;
+            }
+
+            .hadith-list {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                /* Increased from 85px */
+                gap: 15px;
+                /* Increased from 10px */
+            }
+
+            .hadith-title {
+                font-size: 1.8rem;
+                /* Increased from 1.5rem */
+                padding: 12px;
+                /* Added padding for better spacing */
+            }
+
+            .image-counter {
+                width: 28px;
+                /* Slightly larger */
+                height: 28px;
+                /* Slightly larger */
+                font-size: 1.0rem;
+                /* Slightly larger */
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Additional media query for very small screens */
+        @media (max-width: 360px) {
+            .hadith-list {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 12px;
+            }
+
+            .hadith-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div id="loading-statement" class="loading-statement">
+                رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
+            </div>
+            <div id="loading-progress" class="loading-progress">
+                جاري التحميل... <span id="image-count" class="loading-counter">0/0</span>
+            </div>
+        </div>
+    </div>
+    <!-- Dua Text -->
+    <div class="dua-text">اللّٰهُمَّ اجْعَلْ هٰذَا صَدَقَةً جَارِيَةً لِي وَلِوَالِدَيَّ وَأَهْلِ بَيْتِي وَلِكُلِّ مَنْ
+        أَرْسَلَهُ وَقَرَأَهُ وَنَفَعَ النَّاسَ بِهِ</div>
+
+    <!-- Main Page -->
+    <div id="main-page" class="container">
+        <h1 class="page-title">ٱلصَّلَاةُ</h1>
+
+        <div class="hadith-list">
+            <div class="hadith-title" onclick="showHadithPage('sala1', 5)">المجموعة الأولى
+                <span class="image-counter">5</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala2', 5)">المجموعة الثانية
+                <span class="image-counter">5</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala3', 5)">المجموعة الثالثة
+                <span class="image-counter">5</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala4', 5)">المجموعة الرابعة
+                <span class="image-counter">5</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala5', 7)">المجموعة الخامسة
+                <span class="image-counter">7</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala6', 5)">المجموعة السادسة
+                <span class="image-counter">5</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala7', 7)">المجموعة السابعة
+                <span class="image-counter">7</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('sala8', 7)">المجموعة الثامنة
+                <span class="image-counter">7</span>
+            </div>
+            <div class="hadith-title" onclick="showHadithPage('soon', 1)">قريباً
+                <span class="image-counter">1</span>
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala1" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الأولى</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="sala01 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala01 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala01 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala01 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala01 (5).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala2" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الثانية</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="sala02 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala02 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala02 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala02 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala02 (5).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala3" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الثالثة</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="sala03 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala03 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala03 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala03 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala03 (5).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala4" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الرابعة</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="sala04 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala04 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala04 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala04 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala04 (5).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala5" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الخامسة</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="sala5 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (5).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (6).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="sala5 (7).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <div id="hadith-page-sala6" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة السادسة</div>
+                <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+            </div>
+            <div class="hadith-content">
+                <div class="hadith-image-container">
+                    <img src="sala6 (1).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala6 (2).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala6 (3).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala6 (4).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala6 (5).jpeg" class="hadith-image">
+                </div>
+            </div>
+        </div>
+        <div id="hadith-page-sala7" class="hadith-page">
+            <div class="hadith-header">
+                <div class="hadith-page-title">المجموعة السابعة</div>
+                <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+            </div>
+            <div class="hadith-content">
+                <div class="hadith-image-container">
+                    <img src="sala7 (1).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (2).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (3).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (4).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (5).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (6).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala7 (7).jpeg" class="hadith-image">
+                </div>
+            </div>
+        </div>
+        <div id="hadith-page-sala8" class="hadith-page">
+            <div class="hadith-header">
+                <div class="hadith-page-title">المجموعة الثامنة</div>
+                <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+            </div>
+            <div class="hadith-content">
+                <div class="hadith-image-container">
+                    <img src="sala8 (1).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (2).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (3).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (4).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (5).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (6).jpeg" class="hadith-image">
+                </div>
+                <div class="hadith-image-container">
+                    <img src="sala8 (7).jpeg" class="hadith-image">
+                </div>
+            </div>
+        </div>
+        <div id="hadith-page-soon" class="hadith-page">
+            <div class="hadith-header">
+                <div class="hadith-page-title">قريباً</div>
+                <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+            </div>
+            <div class="hadith-content">
+                <div class="hadith-image-container">
+                    <img src="1.jpg" class="hadith-image">
+                </div>
+            </div>
+        </div>
+        <script>
+            // Handle back button press
+            window.addEventListener('popstate', function (event) {
+                // Check if we're on a hadith page
+                const hadithPages = document.querySelectorAll('.hadith-page');
+                let onHadithPage = false;
+
+                hadithPages.forEach(page => {
+                    if (page.style.display === 'block') {
+                        onHadithPage = true;
+                    }
+                });
+
+                if (onHadithPage) {
+                    showMainPage();
+                    // Prevent default back behavior
+                    history.pushState(null, null, document.location);
+                    event.preventDefault();
+                }
+            });
+
+            // Initialize history state
+            history.pushState(null, null, document.location);
+
+            // Array of loading statements
+            const loadingStatements = [
+                "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+                "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",
+                "رَبَّنَا لاَ تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا",
+                "رَبَّنَا وَلاَ تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا",
+                "رَبَّنَا وَلاَ تُحَمِّلْنَا مَا لاَ طَاقَةَ لَنَا بِهِ"
+            ];
+
+            // Function to show a random statement
+            function showRandomStatement() {
+                const randomIndex = Math.floor(Math.random() * loadingStatements.length);
+                document.getElementById('loading-statement').textContent = loadingStatements[randomIndex];
+            }
+
+            // Start showing random statements every 3 seconds
+            let statementInterval = setInterval(showRandomStatement, 3000);
+
+            // حل مشكلة التحميل
+            window.addEventListener('load', function () {
+                // قائمة بجميع مسارات الصور الفريدة
+                const allImagePaths = new Set();
+
+                // جمع مسارات الصور من جميع الصفحات
+                const imageContainers = document.querySelectorAll('.hadith-image');
+                imageContainers.forEach(img => {
+                    // Get the actual image path
+                    const imgPath = new URL(img.src, window.location.href).href;
+                    allImagePaths.add(imgPath);
+                });
+
+                const totalImages = allImagePaths.size;
+                let loadedImages = 0;
+
+                // تحديث العداد
+                document.getElementById('image-count').textContent = `0/${totalImages}`;
+
+                // إذا لم توجد صور، اخفي شاشة التحميل فورًا
+                if (totalImages === 0) {
+                    hideLoadingScreen();
+                    return;
+                }
+
+                // تحميل كل صورة
+                allImagePaths.forEach(src => {
+                    const img = new Image();
+                    img.onload = () => {
+                        loadedImages++;
+                        updateProgress(loadedImages, totalImages);
+                        if (loadedImages === totalImages) {
+                            hideLoadingScreen();
+                        }
+                    };
+                    img.onerror = () => {
+                        loadedImages++;
+                        updateProgress(loadedImages, totalImages);
+                        if (loadedImages === totalImages) {
+                            hideLoadingScreen();
+                        }
+                    };
+                    img.src = src;
+                });
+
+                // مهلة زمنية لضمان عدم التوقف للأبد
+                setTimeout(() => {
+                    if (loadedImages < totalImages) {
+                        hideLoadingScreen();
+                    }
+                }, 10000); // 10 ثواني كحد أقصى
+            });
+
+            // تحديث شريط التقدم
+            function updateProgress(loaded, total) {
+                document.getElementById('image-count').textContent = `${loaded}/${total}`;
+            }
+
+            // إخفاء شاشة التحميل
+            function hideLoadingScreen() {
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.opacity = '0';
+                    document.getElementById('main-page').style.display = 'block';
+
+                    setTimeout(() => {
+                        document.getElementById('loading-screen').style.display = 'none';
+                        clearInterval(statementInterval);
+
+                        // Handle initial page load after images are loaded
+                        if (window.location.hash) {
+                            const hash = window.location.hash.substring(1);
+                            if (hash === 'main' || hash === '') {
+                                showMainPage();
+                            } else {
+                                const hadithTitles = [
+                                    'sala1', 'sala2', 'sala3',
+                                    'sala4', 'sala5', 'sala6',
+                                    'sala7', 'sala8', 'قريباً'
+                                ];
+                                if (hadithTitles.includes(hash)) {
+                                    showHadithPage(hash, 6);
+                                } else {
+                                    showMainPage();
+                                }
+                            }
+                        } else {
+                            showMainPage();
+                        }
+                    }, 500);
+                }, 800);
+            }
+
+            function showHadithPage(title, imageCount) {
+                // Hide all pages
+                document.getElementById('main-page').style.display = 'none';
+                const pages = document.querySelectorAll('.hadith-page');
+                pages.forEach(page => {
+                    page.style.display = 'none';
+                });
+
+                // Show the selected hadith page
+                const pageId = 'hadith-page-' + title;
+                const hadithPage = document.getElementById(pageId);
+                if (hadithPage) {
+                    hadithPage.style.display = 'block';
+                    hadithPage.classList.add('fade-in');
+                } else {
+                    showMainPage();
+                    return;
+                }
+
+                // Update history state
+                history.pushState({ hadithPage: true }, null, `#${title}`);
+
+                // Ensure the page scrolls to top
+                window.scrollTo(0, 0);
+            }
+
+            function showMainPage() {
+                // Hide all hadith pages
+                const pages = document.querySelectorAll('.hadith-page');
+                pages.forEach(page => {
+                    page.style.display = 'none';
+                });
+
+                // Show main page
+                document.getElementById('main-page').style.display = 'block';
+                document.getElementById('main-page').classList.add('fade-in');
+
+                // Update history state
+                history.pushState({ mainPage: true }, null, '#main');
+
+                // Ensure the page scrolls to top
+                window.scrollTo(0, 0);
+            }
+
+        </script>
+</body>
+
+</html>
