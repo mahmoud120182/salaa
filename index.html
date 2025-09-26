@@ -254,32 +254,32 @@
         /* Different background colors for each hadith title */
         .hadith-title:nth-child(1) {
             background-color: #3498db;
-            /* Blue */
+            /* Peter River (Blue) */
         }
 
         .hadith-title:nth-child(2) {
             background-color: #e74c3c;
-            /* Red */
+            /* Alizarin (Red) */
         }
 
         .hadith-title:nth-child(3) {
             background-color: #2ecc71;
-            /* Green */
+            /* Emerald (Green) */
         }
 
         .hadith-title:nth-child(4) {
             background-color: #9b59b6;
-            /* Purple */
+            /* Amethyst (Purple) */
         }
 
         .hadith-title:nth-child(5) {
             background-color: #f1c40f;
-            /* Yellow */
+            /* Sunflower (Yellow) */
         }
 
         .hadith-title:nth-child(6) {
             background-color: #e67e22;
-            /* Orange */
+            /* Carrot (Orange) */
         }
 
         .hadith-title:nth-child(7) {
@@ -289,17 +289,67 @@
 
         .hadith-title:nth-child(8) {
             background-color: #34495e;
-            /* Dark Blue */
+            /* Wet Asphalt (Dark Blue) */
         }
 
         .hadith-title:nth-child(9) {
             background-color: #c0392b;
-            /* Dark Red */
+            /* Pomegranate (Dark Red) */
         }
 
         .hadith-title:nth-child(10) {
             background-color: #27ae60;
-            /* Dark Green */
+            /* Nephritis (Dark Green) */
+        }
+
+        .hadith-title:nth-child(11) {
+            background-color: #2980b9;
+            /* Belize Hole (Medium Blue) */
+        }
+
+        .hadith-title:nth-child(12) {
+            background-color: #d35400;
+            /* Pumpkin (Deep Orange) */
+        }
+
+        .hadith-title:nth-child(13) {
+            background-color: #8e44ad;
+            /* Wisteria (Dark Purple) */
+        }
+
+        .hadith-title:nth-child(14) {
+            background-color: #f39c12;
+            /* Orange (Gold) */
+        }
+
+        .hadith-title:nth-child(15) {
+            background-color: #7f8c8d;
+            /* Asbestos (Gray) */
+        }
+
+        .hadith-title:nth-child(16) {
+            background-color: #ecf0f1;
+            /* Clouds (Light Gray/White) - *Use with dark text* */
+        }
+
+        .hadith-title:nth-child(17) {
+            background-color: #bdc3c7;
+            /* Silver (Light Gray) */
+        }
+
+        .hadith-title:nth-child(18) {
+            background-color: #95a5a6;
+            /* Concrete (Medium Gray) */
+        }
+
+        .hadith-title:nth-child(19) {
+            background-color: #16a085;
+            /* Green Sea (Deep Turquoise) */
+        }
+
+        .hadith-title:nth-child(20) {
+            background-color: #2c3e50;
+            /* Midnight Blue (Very Dark Blue) */
         }
 
         /* Hadith Page Styles */
@@ -656,6 +706,15 @@
             <div class="hadith-title" onclick="showSubcategoryPage('sala')">ٱلصَّلَاةُ
                 <span class="image-counter">81</span>
             </div>
+            <div class="hadith-title" onclick="showSubcategoryPage('wetr')">صَلاةُ الوِتْرِ
+                <span class="image-counter">20</span>
+            </div>
+            <div class="hadith-title" onclick="showSubcategoryPage('doa')">اَلدُّعَاءُ فِي الصَّلَاةِ
+                <span class="image-counter">80</span>
+            </div>
+            <div class="hadith-title" onclick="showSubcategoryPage('mob')">مُبْطِلَاتُ الصَّلَاةِ
+                <span class="image-counter">44</span>
+            </div>
             <div class="hadith-title" onclick="showSubcategoryPage('reco')">الرُّكُوعُ وَالسُّجُودُ
                 <span class="image-counter">60</span>
             </div>
@@ -749,6 +808,67 @@
                 <div class="subcategory-item" onclick="showHadithPage('sala', 'المجموعة_الرابعة_عشرة')">
                     المجموعة الرابعة عشرة
                     <span class="image-counter">4</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subcategory Page for صلاة الوتر -->
+    <div id="subcategory-page-wetr" class="subcategory-page">
+        <div class="subcategory-header">
+            <div class="subcategory-page-title">صَلاةُ الوِتْرِ</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="subcategory-content">
+            <div class="subcategory-list">
+                <div class="subcategory-item" onclick="showHadithPage('wetr', 'المجموعة_الأولى')">
+                    المجموعة الأولى
+                    <span class="image-counter">20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subcategory Page for الدعاء في الصلاة -->
+    <div id="subcategory-page-doa" class="subcategory-page">
+        <div class="subcategory-header">
+            <div class="subcategory-page-title">اَلدُّعَاءُ فِي الصَّلَاةِ</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="subcategory-content">
+            <div class="subcategory-list">
+                <div class="subcategory-item" onclick="showHadithPage('doa', 'المجموعة_الأولى')">
+                    المجموعة الأولى
+                    <span class="image-counter">24</span>
+                </div>
+                <div class="subcategory-item" onclick="showHadithPage('doa', 'المجموعة_الثانية')">
+                    المجموعة الثانية
+                    <span class="image-counter">7</span>
+                </div>
+                <div class="subcategory-item" onclick="showHadithPage('doa', 'المجموعة_الثالثة')">
+                    المجموعة الثالثة
+                    <span class="image-counter">12</span>
+                </div>
+                <div class="subcategory-item" onclick="showHadithPage('doa', 'المجموعة_الرابعة')">
+                    المجموعة الرابعة
+                    <span class="image-counter">17</span>
+                </div>
+                <div class="subcategory-item" onclick="showHadithPage('doa', 'المجموعة_الخامسة')">
+                    المجموعة الخامسة
+                    <span class="image-counter">20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subcategory Page for  مبطلات الصلاة -->
+    <div id="subcategory-page-mob" class="subcategory-page">
+        <div class="subcategory-header">
+            <div class="subcategory-page-title">مُبْطِلَاتُ الصَّلَاةِ</div>
+            <i class="fas fa-home home-icon" onclick="showMainPage()"></i>
+        </div>
+        <div class="subcategory-content">
+            <div class="subcategory-list">
+                <div class="subcategory-item" onclick="showHadithPage('mob', 'المجموعة_الأولى')">
+                    المجموعة الأولى
+                    <span class="image-counter">44</span>
                 </div>
             </div>
         </div>
@@ -1387,6 +1507,587 @@
             </div>
         </div>
     </div>
+    <!-- Hadith Pages for صلاة الوتر -->
+    <div id="hadith-page-wetr-المجموعة_الأولى" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الأولى</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('wetr')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="wetr (1).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (2).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (3).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (4).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (5).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (6).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (7).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (8).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (9).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (10).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (11).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (12).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (13).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (14).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (15).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (16).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (17).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (18).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (19).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="wetr (20).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <!-- Hadith Pages for الدعاء في الصلاة -->
+    <div id="hadith-page-doa-المجموعة_الأولى" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الأولى</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('doa')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="doa1 (1).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (2).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (3).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (4).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (5).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (6).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (7).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (8).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (9).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (10).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (11).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (12).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (13).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (14).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (15).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (16).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (17).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (18).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (19).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (20).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (21).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (22).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (23).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="doa1 (24).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="hadith-page-doa-المجموعة_الثانية" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الثانية</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('doa')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="doa2 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (5).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (6).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa2 (7).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="hadith-page-doa-المجموعة_الثالثة" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الثالثة</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('doa')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="doa3 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (5).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (6).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (7).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (8).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (9).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (10).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (11).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa3 (12).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="hadith-page-doa-المجموعة_الرابعة" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الرابعة</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('doa')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="doa4 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (5).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (6).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (7).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (8).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (9).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (10).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (11).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (12).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (13).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (14).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (15).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (16).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa4 (17).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="hadith-page-doa-المجموعة_الخامسة" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الخامسة</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('doa')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="doa5 (1).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (2).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (3).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (4).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (5).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (6).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (7).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (8).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (9).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (10).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (11).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (12).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (13).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (14).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (15).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (16).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (17).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (18).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (19).jpeg" class="hadith-image">
+            </div>
+            <div class="hadith-image-container">
+                <img src="doa5 (20).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+    <!-- Hadith Pages for  مبطلات الصلاة -->
+    <div id="hadith-page-mob-المجموعة_الأولى" class="hadith-page">
+        <div class="hadith-header">
+            <div class="hadith-page-title">المجموعة الأولى</div>
+            <i class="fas fa-arrow-right home-icon" onclick="showSubcategoryPage('mob')"></i>
+        </div>
+        <div class="hadith-content">
+            <div class="hadith-image-container">
+                <img src="mob (1).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (2).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (3).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (4).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (5).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (6).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (7).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (8).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (9).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (10).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (11).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (12).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (13).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (14).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (15).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (16).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (17).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (18).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (19).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (20).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (21).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (22).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (23).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (24).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (25).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (26).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (27).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (28).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (29).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (30).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (31).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (32).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (33).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (34).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (35).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (36).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (37).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (38).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (39).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (40).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (41).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (42).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (43).jpeg" class="hadith-image">
+            </div>
+
+            <div class="hadith-image-container">
+                <img src="mob (44).jpeg" class="hadith-image">
+            </div>
+        </div>
+    </div>
+
     <!-- Hadith Pages for الركوع والسجود -->
     <div id="hadith-page-reco-المجموعة_الأولى" class="hadith-page">
         <div class="hadith-header">
